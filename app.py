@@ -266,10 +266,11 @@ if st.sidebar.button('ID My Bird'):
 
 
     if float(confidence) < 50.0:
+        predicted_species = str(df_preds.loc[1,"names"])
+        predicted_species = predicted_species.strip('"')
+        confidence = df_preds.loc[1,"preds"]
         if st.sidebar.button(f'{predicted_species} Confidence: {confidence}'):
-            predicted_species = str(df_preds.loc[1,"names"])
-            predicted_species = predicted_species.strip('"')
-            confidence = df_preds.loc[1,"preds"]
+
 
             # print("-----------------")
 
