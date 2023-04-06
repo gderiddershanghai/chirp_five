@@ -337,5 +337,5 @@ if st.sidebar.button('ID My Bird'):
 
             df = get_map_data(predicted_species)
             st.map(df)
-            fp_1 =f"/home/ginger/code/gderiddershanghai/chirp_five/interface/data/five/{predicted_species}.mp3"
+            fp_1 =f"interface/data/five/{predicted_species}.mp3"
             st.audio(fp_1, format="audio/wav")
