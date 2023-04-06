@@ -271,46 +271,6 @@ if st.sidebar.button('ID My Bird'):
             predicted_species = predicted_species.strip('"')
             confidence = df_preds.loc[1,"preds"]
 
-            url = 'https://chirpapi-niuue56uea-an.a.run.app/predict_five?lng={}&lat={}&month={}'.format(lng, lat, month)
-
-            headers = {
-                'accept': 'application/json',
-            }
-
-            fp = "audio.wav"
-            files = {
-                'file': (fp, open(fp, 'rb')),
-            }
-
-            response = requests.post(url, headers=headers, files=files)
-            prediction = json.loads(response.content)
-
-            preds = []
-            names= ["Alpine Leaf Warbler",]
-            prediction["prediction"].split(":")
-            for i in prediction["prediction"].split(":")[2:-1]:
-                name = i.split(",")[1].replace("\\", "")
-                pred = float(i.split(",")[0])
-                names.append(name)
-                preds.append(pred)
-
-            df_2 = pd.concat([pd.DataFrame(names)[0], pd.DataFrame(preds)[0]], axis=1)
-            df_2.columns = ["names", "preds"]
-            df_2["preds"] = df_2["preds"].replace(np.nan, 0)
-
-            # print(df_2.iloc[35,1])
-            # print(type(df_2.iloc[35,1]))
-            df_preds = df_2.sort_values(by="preds", ascending=False).reset_index()
-            # print(df_preds)
-            # print(df_preds.loc[0,"names"])
-            # print(df_preds.loc[0,"preds"])
-
-            # print(type(df_preds.loc[0,"names"]))
-            # print(type(df_preds.loc[0,"preds"]))
-
-            predicted_species = str(df_preds.loc[0,"names"])
-            predicted_species = predicted_species.strip('"')
-            confidence = df_preds.loc[0,"preds"]
             # print("-----------------")
 
 
