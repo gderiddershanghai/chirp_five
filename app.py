@@ -40,7 +40,20 @@ with title_col:
     st.title("ChirpID")
 
 #chirpID description
-st.write("ChirpID is a new tool to help nature lovers, avid birders, field researchers, and all curious souls to discover the birds around them. The model uses a functional model combining dense and convolutional neutral networks to classify bird species through preprocessed audio input. Simply record or upload an audio clip, and ChirpID will tell you about the bird species you are hearing!")
+# st.write("ChirpID is a new tool to help nature lovers, avid birders, field researchers, and all curious souls to discover the birds around them. The model uses a functional model combining dense and convolutional neutral networks to classify bird species through preprocessed audio input. Simply record or upload an audio clip, and ChirpID will tell you about the bird species you are hearing!")
+
+st.write("Discover the birds you are hearing with ChirpID! Simply: ")
+
+st.markdown('''
+            - Upload or record bird sound
+
+            - Tell us the location of recording (or use current location)
+
+            - Click "ID my Bird"
+
+            Enjoy learning about the avian friends around you!
+
+            ''')
 
 with st.sidebar:
     audio_bytes = audio_recorder(
@@ -244,6 +257,14 @@ if st.sidebar.button('ID My Bird'):
     st.map(df)
     fp_1 =f"/home/ginger/code/gderiddershanghai/chirp_five/interface/data/five/{predicted_species}.mp3"
     st.audio(fp_1, format="audio/wav")
+    st.markdown("""
+    Made possible by
+    [Joyce Siu] - (https://github.com/jss-520)
+    [Helena Zhu] - (https://github.com/helchu)
+    [Ginger de Ridder] - (https://github.com/gderiddershanghai/)
+    """)
+
+
     if float(confidence) < 50.0:
         if st.sidebar.button(f'{predicted_species} Confidence: {confidence}'):
             predicted_species = str(df_preds.loc[1,"names"])
