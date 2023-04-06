@@ -1,0 +1,19 @@
+
+streamlit
+numpy
+pandas
+
+
+geopy
+streamlit_js_eval
+# time
+audio_recorder_streamlit
+matplotlib
+# calendar
+datetime
+
+requests
+# json
+librosa
+Pillow`
+# PIL
