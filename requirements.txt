@@ -15,5 +15,5 @@ datetime
 requests
 # json
 librosa
-Pillow`
+Pillow
 # PIL
